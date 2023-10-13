@@ -1,0 +1,34 @@
+server:
+  port: 8222
+
+eureka:
+  client:
+    register-with-eureka: false
+
+spring:
+  application:
+    name: gateway
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/tweeter-clone-microservices-realm
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: tweet
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/v1/tweet/**
+        - id: feed
+          uri: http://localhost:8092
+          predicates:
+            - Path=/api/v1/feed/**
+        - id: user
+          uri: http://localhost:8093
+          predicates:
+            - Path=/api/v1/user/**
+
