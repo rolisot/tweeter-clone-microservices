@@ -1,0 +1,13 @@
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/jarRepositories.xml
+/config-server/.mvn/wrapper/maven-wrapper.jar
+/discovery/.mvn/wrapper/maven-wrapper.jar
+/feeds/.mvn/wrapper/maven-wrapper.jar
+/gateway/.mvn/wrapper/maven-wrapper.jar
+/tweet/.mvn/wrapper/maven-wrapper.jar
+/users/.mvn/wrapper/maven-wrapper.jar
+/.idea/misc.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
