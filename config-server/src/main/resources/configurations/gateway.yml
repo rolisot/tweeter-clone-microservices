@@ -1,5 +1,5 @@
 server:
-  port: 8222
+  port: 8080
 
 eureka:
   client:
@@ -8,11 +8,11 @@ eureka:
 spring:
   application:
     name: gateway
-  security:
-    oauth2:
-      resource-server:
-        jwt:
-          issuer-uri: http://localhost:9090/realms/tweeter-clone-microservices-realm
+#  security:
+#    oauth2:
+#      resource-server:
+#        jwt:
+#          issuer-uri: http://localhost:9090/realms/tweeter-clone-microservices-realm
   cloud:
     gateway:
       discovery:
@@ -23,12 +23,25 @@ spring:
           uri: http://localhost:8090
           predicates:
             - Path=/api/v1/tweet/**
+          filters:
+            - AuthenticationFilter
+
         - id: feed
           uri: http://localhost:8092
           predicates:
             - Path=/api/v1/feed/**
+          filters:
+            - AuthenticationFilter
+
         - id: user
           uri: http://localhost:8093
           predicates:
             - Path=/api/v1/user/**
+          filters:
+            - AuthenticationFilter
+
+        - id: identity
+          uri: http://localhost:9292
+          predicates:
+            - Path=/auth/**
 
